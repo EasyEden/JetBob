@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('announcements', function (Blueprint $table) {
+        Schema::create('user_permissions', function (Blueprint $table) {
             $table->id();
+            $table->string("permission");
+            $table->dateTime("disabled_until");
+            $table->boolean("enabled");
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("permission_id");
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('user_permissions');
     }
 };

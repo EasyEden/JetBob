@@ -7,10 +7,43 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function roles(): HasMany
+    {
+        return $this->hasMany(Role::class);
+    }
+
+    public function userPermissions(): HasMany
+    {
+        return $this->hasMany(UserPermission::class);
+    }
+
+    public function resetToken(): BelongsTo
+    {
+        return $this->belongsTo(ResetToken::class);
+    }
+
+    public function loginToken(): BelongsTo
+    {
+        return $this->belongsTo(LoginToken::class);
+    }
 
     /**
      * The attributes that are mass assignable.

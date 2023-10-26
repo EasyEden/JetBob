@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->text("content");
-            $table->integer("user_id");
-            $table->integer("category_id");
+            $table->longText("content");
+            $table->string("image_url");
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("category_id");
             $table->timestamps();
         });
     }

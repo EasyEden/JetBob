@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inbed_images', function (Blueprint $table) {
+        Schema::create('login_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string("image");
-            $table->integer("post_id");
+            $table->string("token");
+            $table->dateTime("valid_until");
+            $table->unsignedBigInteger("user_id");
+            $table->timestamps();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inbed_images');
+        Schema::dropIfExists('login_tokens');
     }
 };
