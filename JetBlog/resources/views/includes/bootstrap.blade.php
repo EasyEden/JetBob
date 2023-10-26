@@ -1,4 +1,8 @@
-/*!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -8973,3 +8977,4 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+    </style>
