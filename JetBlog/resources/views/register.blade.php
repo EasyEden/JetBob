@@ -11,12 +11,13 @@
             <input id="username" name="username" type="text" placeholder="Username"><br>
             {{-- Email --}}
             <label class="mt-2" for="email">Email:</label><br>
-            <input id="email" name="email" type="text" placeholder="Email"><br><br>
+            <input id="email" name="email" type="text" placeholder="Email"><br>
             {{-- Password --}}
             <label class="mt-3" for="password">Password:</label><br>
-            <input id="password" name="password" type="password" placeholder="Password"><input onclick="showPassword()" id="showPassword" type="checkbox"><br>
+            <input id="password" name="password" type="password" placeholder="Password"><br>
             <label class="mt-2" for="password">Comfirm Password:</label><br>
-            <input id="confrimPassword" name="confirmPassword" type="password" placeholder="Confirm Password"><br><br>
+            <input id="confrimPassword" name="confirmPassword" type="password" placeholder="Confirm Password"><br>
+            <input id="showPasswordBox" type="checkbox"><label style="margin-left: 5px; color: grey;" for="showPasswordBox">Show Password</label><br><br>
             {{-- Submit --}}
             <button class="btn" type="submit">Register</button>
         </form>
@@ -24,18 +25,4 @@
 </div>
 
 {{-- Script --}}
-<script>
-    function showPassword() {
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirmPassword");
-        const showPassword = document.getElementById("showPassword");
-        
-        if (showPassword.checked) {
-            password.type = "text";
-            confrimPassword.type = "text";
-        } else {
-            password.type = "password"
-            confrimPassword.type = "password";
-        }
-    }
-</script>
+<script src="{{ asset('js/auth.js') }}"></script>
