@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('pass_word');
             $table->unsignedBigInteger("role_id")->default(1);
             $table->timestamps();
         });
