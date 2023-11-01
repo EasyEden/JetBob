@@ -14,7 +14,7 @@ class AuthController extends Controller
             $user->email = $request->email;
             $user->pass_word = hash('md5' , $request->password);
             $user->save();
-            $msg = "Registered Succesfully! You can now log in to your new account!";
+            $msg = "Registered Successfully! You can now log in to your new account!";
             return redirect("/login")->with(['msg' => $msg]);
         } else {
             abort(404);
@@ -26,12 +26,13 @@ class AuthController extends Controller
 
         if($user) {
             if(hash('md5' , $request->password) === $user->pass_word) {
-                echo "logged in";
+                return redirect("/")->with(['user' => $user->name]);
+                // echo "logged in as: " , $user->name , ".";
             } else {
-                echo "wrong password";
+                abort(404);
             }
         } else {
-            echo "wrong username";
+            abort(404);
         }
     }
 }
