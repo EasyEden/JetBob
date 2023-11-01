@@ -6,9 +6,9 @@
         {{-- Login Form --}}
         <form action="{{ route ('login') }}" method="POST">
             @csrf
-            {{-- succesfully registered message --}}
+            {{-- Succesfully Registered Message --}}
             @if(session('msg'))
-            <p class="text-primary text-center">Registered Succesfully! You can now log in to your new account!</p>
+            <p class="text-primary text-center">{{session('msg')}}</p>
             @endif
             {{-- Username --}}
             <label for="username">Username:</label><br>
@@ -23,4 +23,5 @@
     </div>
 </div>
 
+{{-- Auth Script --}}
 <script src="{{ asset('js/auth.js') }}"></script>

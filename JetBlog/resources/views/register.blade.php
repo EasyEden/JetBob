@@ -16,7 +16,7 @@
             <label class="mt-3" for="password">Password:</label><br>
             <input id="password" name="password" type="password" placeholder="Password"><br>
             <label class="mt-2" for="password">Comfirm Password:</label><br>
-            <input id="confrimPassword" name="confirmPassword" type="password" placeholder="Confirm Password"><br>
+            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password"><br>
             <input id="showPasswordBox" type="checkbox"><label style="margin-left: 5px; color: grey;" for="showPasswordBox">Show Password</label><br><br>
             {{-- Submit --}}
             <button class="btn" type="submit">Register</button>
@@ -24,5 +24,5 @@
     </div>
 </div>
 
-{{-- Script --}}
+{{-- Auth Script --}}
 <script src="{{ asset('js/auth.js') }}"></script>
