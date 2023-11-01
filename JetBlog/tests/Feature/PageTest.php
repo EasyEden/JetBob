@@ -8,9 +8,6 @@ use Tests\TestCase;
 
 class PageTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_home_page_exists(): void
     {
         $response = $this->get('/');

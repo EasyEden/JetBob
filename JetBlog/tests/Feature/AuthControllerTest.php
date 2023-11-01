@@ -10,9 +10,6 @@ use App\Models\User;
 
 class AuthControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
     public function test_registered_successfully(): void
     {
         // make sure the test user doesn't exist
