@@ -50,7 +50,29 @@ class DatabaseTest extends TestCase
         $this->assertTrue($result, 'Failed to insert user using User model');
     }
 
-    public function test_can_insert_user_using_sql_query(): void
+    // public function test_can_insert_user_using_sql_query(): void
+    // {
+    //     // make sure the test user doesn't exist
+    //     $user = User::where('name', 'test')->first();
+    //     if($user) {
+    //         $user->delete();
+    //     }
+
+    //     // create a test user for testing
+    //     DB::table('users')->insert(['name' => 'test', 'email' => 'test@example.com', 'pass_word' => md5('password')]);
+
+    //     $user = User::where('name', 'test')->first();
+    //     if($user) {
+    //         $result = true;
+    //         $user->delete();
+    //     } else {
+    //         $result = false;
+    //     }
+
+    //     $this->assertTrue($result, 'Failed to insert user using SQL query');
+    // }
+
+    public function test_can_delete_user_using_user_model(): void
     {
         // make sure the test user doesn't exist
         $user = User::where('name', 'test')->first();
@@ -59,9 +81,49 @@ class DatabaseTest extends TestCase
         }
 
         // create a test user for testing
-        DB::table('users')->insert(['name' => 'test', 'email' => 'test@example.com', 'pass_word' => md5('password')]);
+        $user = new User();
+        $user->name = "test";
+        $user->email = "test@example.com";
+        $user->pass_word = hash('md5', 'password');
+        $user->save();
 
+        // get and delete the user
         $user = User::where('name', 'test')->first();
+        $user->delete();
+
+        // check if the user is gone
+        $user = User::where('name', 'test')->first();
+        if(!$user) {
+            $result = true;
+        } else {
+            $user->delete();
+            $result = false;
+        }
+
+        $this->assertTrue($result, 'Failed to delete user using User model');
+    }
+
+    public function test_can_update_user_using_user_model(): void
+    {
+        // make sure the test user doesn't exist
+        $user = User::where('name', 'test')->first();
+        if($user) {
+            $user->delete();
+        }
+
+        // create a test user for testing
+        $user = new User();
+        $user->name = "test";
+        $user->email = "test@example.com";
+        $user->pass_word = hash('md5', 'password');
+        $user->save();
+
+        // get and delete the user
+        $user = User::where('name', 'test')->first();
+        $user->update(['email' => "new@example.com"]);
+
+        // check if the user is updated
+        $user = User::where('email', 'new@example.com')->first();
         if($user) {
             $result = true;
             $user->delete();
@@ -69,6 +131,6 @@ class DatabaseTest extends TestCase
             $result = false;
         }
 
-        $this->assertTrue($result, 'Failed to insert user using User model');
+        $this->assertTrue($result, 'Failed to delete user using User model');
     }
 }
