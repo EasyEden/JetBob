@@ -6,14 +6,14 @@ function showPassword() {
     if (showPasswordBox.checked) {
         if(confirmPassword) {
             password.type = "text";
-            confrimPassword.type = "text";
+            confirmPassword.type = "text";
         } else {
             password.type = "text";
         }
     } else {
         if(confirmPassword) {
             password.type = "password";
-            confrimPassword.type = "password";
+            confirmPassword.type = "password";
         } else {
             password.type = "password";
         }
